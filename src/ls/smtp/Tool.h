@@ -2,6 +2,7 @@
 #define LS_SMTP_TOOL_H
 
 #include "ls/smtp/Client.h"
+#include "ls/smtp/SmtpConfig.h"
 
 namespace ls
 {
@@ -10,6 +11,7 @@ namespace ls
 		class Tool
 		{
 			static Tool *instance;	
+			SmtpConfig config;
 			Client *client;
 			public:
 				Tool();

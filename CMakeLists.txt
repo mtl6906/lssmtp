@@ -13,4 +13,4 @@ add_executable(testcase ${SRC} ${SRC_SAMPLE})
 
 add_library(lssmtp SHARED ${SRC})
 
-target_link_libraries(testcase lsjson lsbase64 lsbuffer lsutil)
+target_link_libraries(testcase lsconfig lsjson lsbase64 lsbuffer lsutil lsorderedmap)
