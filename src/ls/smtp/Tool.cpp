@@ -6,22 +6,21 @@ namespace ls
 {
 	namespace smtp
 	{
-		Tool *Tool::instance = new Tool();
-		Tool::Tool() : client(new Client(config.url, config.username, config.password, config.buffersize))
+		Tool::Tool()
 		{
-
+			User user;
+			user.url = config.url;
+			user.username = config.username;
+			user.password = config.password;
+			request = new Request(user, config.buffersize);
 		}
 		Tool::~Tool()
 		{
-			  delete client;
+			  delete request;
 		}
-		Tool *Tool::GetInstance()
+		Request *Tool::getRequest()
 		{
-			return instance;
-		}
-		Client *Tool::GetClient()
-		{
-			return client;
+			return request;
 		}
 	}
 }

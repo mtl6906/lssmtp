@@ -1,0 +1,19 @@
+220 Service ready
+
+HELO smtp.xx.com ==> 250 OK || 421 Service not Available
+
+MAIL FROM: <907903557@qq.com> ==> 250 OK || 451 Request action aborted: local error in processing || 452 Request action not taken: insufficient system storage || 500 Syntax error, command unrecognized
+
+RCPT TO: <zzz5486129@163.com> ==> 250 OK || 550 No such user here6
+
+DATA ==> 354 Start mail input; end with <CR><LF>.<CR><LF> || 421 Service not available || 500 Syntax error
+
+To: zzz5486129@163.com
+SUBJECT: 1
+CONTENT: 2
+FROM:
+DATE:
+.
+==> 250 OK
+
+QUIT ==> 221 Bye
