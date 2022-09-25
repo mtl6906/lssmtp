@@ -31,6 +31,7 @@ namespace ls
 
 		void Request::sendAndRecv(io::InputStream &in, io::OutputStream &out)
 		{
+			LOGGER(ls::INFO) << out.getBuffer() -> begin() << ls::endl;
 			out.write();
 			try
 			{
@@ -51,14 +52,12 @@ namespace ls
 		{
 			io::InputStream in(sock -> getReader(), &rbuffer);
 			io::OutputStream out(sock -> getWriter(), &sbuffer);
-			out.append("helo ");
-			out.append(user.url);
-			out.append("\r\n");
-			sendAndRecv(in, out);
+
+			in.read();
+			LOGGER(ls::INFO) << in.split() << ls::endl;
 
 			out.append("auth login\r\n");
 			sendAndRecv(in, out);
-	
 			string username;
 			string password;
 			base64.encode(user.username, username);
@@ -68,6 +67,11 @@ namespace ls
 			sendAndRecv(in, out);
 	
 			out.append(password);
+			out.append("\r\n");
+			sendAndRecv(in, out);
+			
+			out.append("helo ");
+			out.append(user.url);
 			out.append("\r\n");
 			sendAndRecv(in, out);
 
